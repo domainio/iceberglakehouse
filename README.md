@@ -95,7 +95,7 @@ spark.sql("SELECT * FROM nessie.names;").show()
     * Name: `fs.s3a.path.style.access` Value: `true` (access to s3 API) 
     * Name: `fs.s3a.endpoint` Value: `minio:9000` (the container name)
     * Name: `dremio.s3.compat` Value: `true`  (allow to use s3 compatible storage layer)
-    * Encrypt connection: [ ]
+    * Encrypt connection: unchecked [ ]
     
 
 ## Hand-on
