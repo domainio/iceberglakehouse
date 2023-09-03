@@ -113,6 +113,7 @@ https://docs.dremio.com/current/reference/sql/commands/apache-iceberg-tables/apa
 
 
 ### Iceberg Tags
+* Run commands on Spark notebook
 * `spark.sql("ALTER TABLE <table-name> SET TBLPROPERTIES ('write.wap.enabled''true')")`
 * `spark.sql("CREATE TABLE IF NOT EXISTS nessie.employees (id BIGINT, name STRING, role STRING, salary double) USING iceberg")`
 * `spark.sql("INSERT INTO nessie.employees values (1, 'Harry', 'Software Engineer', 25000), (2, 'John', 'Marketing Ops', 17000)")`
@@ -123,6 +124,7 @@ https://docs.dremio.com/current/reference/sql/commands/apache-iceberg-tables/apa
 * `spark.sql("SELECT * FROM nessie.employees VERSION AS OF 'etl_1'").show()`
 
 ### Iceberg Branches
+* Run commands on Spark notebook
 * `spark.sql("ALTER TABLE nessie.employees CREATE BRANCH ML_exp")`
 * ```
   schema = spark.table("nessie.employees").schema
@@ -141,6 +143,7 @@ https://docs.dremio.com/current/reference/sql/commands/apache-iceberg-tables/apa
 * `spark.sql("SELECT * FROM nessie.employees.refs").show()`
 
 ### Nessie Branches (!)
+* Run commands on Dremio sql runner
 * `CREATE BRANCH etl_1 in nessie;`
 * Set branch reference to "etl_1"
 * `CREATE TABLE nessie.names2 (name VARCHAR);`
