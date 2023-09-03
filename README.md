@@ -1,7 +1,8 @@
 # Iceberg Lakehouse
 Building a Data Lakehouse with Apache Iceberg, Spark, Dremio, Nessie &amp; Minio
 
-## Minio Server
+## Launch environment
+### Minio Server
 * Open a terminal
 * `docker-compose up minioserver`
 * Browse to `127.0.0.1:9001`
@@ -9,19 +10,23 @@ Building a Data Lakehouse with Apache Iceberg, Spark, Dremio, Nessie &amp; Minio
 * Create a bucket: `warehouse`
 * Create access key - copy to `.env` file
 
-## Nessie
+### Nessie
 * Open a terminal
 * `docker-compose up nessie`
 
-## Spark Notebook
+### Spark Notebook
+* Open a terminal
 * `docker-compose up spark_notebook`
-* Browse to `http://127.0.0.1:8888/tree`
 
-## Dremio
+### Dremio
+* Open a terminal
 * `docker-compose up dremio`
 
-## Create Iceberg tables
-* Create a new Pyhton3 notebook
+## Integrate Components
+### Create Iceberg tables with Spark notebook
+* Browse to `http://127.0.0.1:8888/tree`
+* Create a new Pyhton3 notebook\
+* Run this code:
 ```
 import pyspark
 from pyspark.sql import SparkSession
@@ -62,33 +67,36 @@ spark.sql("INSERT INTO nessie.names VALUES ('Backend group'), ('Tikal office'), 
 spark.sql("SELECT * FROM nessie.names;").show()
 ```
 
-Dremio
-http://localhost:9047/
+## Add space and data source to Dremio
+* Browse to `http://localhost:9047/`
+* Add a Space "data product 1"
+* Add new folders: Bronze, Silver, Gold
 
-Add a Space "data product 1"
-Add new folders: Bronze, Silver, Gold
-
-Inspect minio Object browser for the data created by Spark: data and metadata
+## Inspect warehouse data in minio
+* Browse to `127.0.0.1:9001`
+* Inspect minio Object browser for the data created by Spark: data and **metadata** files
 
 ### Connnect Dremio to Nessie
-1. Add source: nessie
-2. General
-   * Name: `nessie`
-   * Nessie Endpoint URL: `HTTP://nessie:19120/api/v2`
-     - Use the docker-compose network ability
-     - Nessie/Dermio connector uses v2
-   * Auth: `None`
-4. Storage
-   * AWS Access Key: `xxxxxxx` <from .env>
-   * AWS Access Secret: `xxxxxxx` <from .env>
-   * AWS Root Path: `/warehouse`
-   * Connection Properties (allow access to storage)
-     * Name: `fs.s3a.path.style.access` Value: `true` (access to s3 API) 
-     * Name: `fs.s3a.endpoint` Value: `minio:9000` (the container name)
-     * Name: `dremio.s3.compat` Value: `true`  (allow to use s3 compatible storage layer)
-     * Encrypt connection: [ ]
+* Browse to `http://localhost:9047/`
+* Add source: nessie
+  * General
+    * Name: `nessie`
+    * Nessie Endpoint URL: `HTTP://nessie:19120/api/v2`
+      - Use the docker-compose network ability
+      - Nessie/Dermio connector uses v2
+    * Nessue Authentication Type: `None`
+* Storage
+  * AWS Access Key: `xxxxxxx` <from .env>
+  * AWS Access Secret: `xxxxxxx` <from .env>
+  * AWS Root Path: `/warehouse`
+  * Connection Properties (allow access to storage)
+    * Name: `fs.s3a.path.style.access` Value: `true` (access to s3 API) 
+    * Name: `fs.s3a.endpoint` Value: `minio:9000` (the container name)
+    * Name: `dremio.s3.compat` Value: `true`  (allow to use s3 compatible storage layer)
+    * Encrypt connection: [ ]
     
 
+## Hand-on
 ### Query Iceberg Metadata
 * Querying a Table's **Data File** Metadata `SELECT * FROM TABLE( table_files('<table_name>') )`
 * Querying a Table's **History** Metadata `SELECT * FROM TABLE( table_history('<table_name>') )`
