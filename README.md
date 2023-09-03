@@ -111,7 +111,36 @@ spark.sql("SELECT * FROM nessie.names;").show()
 
 https://docs.dremio.com/current/reference/sql/commands/apache-iceberg-tables/apache-iceberg-select/
 
-### Branches
+
+### Iceberg Tags
+* `spark.sql("ALTER TABLE <table-name> SET TBLPROPERTIES ('write.wap.enabled''true')")`
+* `spark.sql("CREATE TABLE IF NOT EXISTS nessie.employees (id BIGINT, name STRING, role STRING, salary double) USING iceberg")`
+* `spark.sql("INSERT INTO nessie.employees values (1, 'Harry', 'Software Engineer', 25000), (2, 'John', 'Marketing Ops', 17000)")`
+* `spark.sql("SELECT * FROM nessie.employees").show()`
+* `spark.sql("ALTER TABLE nessie.employees CREATE TAG etl_1 RETAIN 10 DAYS")`
+* `spark.sql("INSERT INTO nessie.employees values (3, 'Jake', 'Architect', 32000), (4, 'Noam', 'Manager', 33000)")`
+* `spark.sql("SELECT * FROM nessie.employees").show()`
+* `spark.sql("SELECT * FROM nessie.employees VERSION AS OF 'etl_1'").show()`
+
+### Iceberg Branches
+* `spark.sql("ALTER TABLE nessie.employees CREATE BRANCH ML_exp")`
+* ```
+  schema = spark.table("nessie.employees").schema
+  data = [
+    (6, "Troy", "CMO", 30000.0),
+    (7, "Raine", "UX", 21000.0),
+    (8, "Harry", "QA", 22000.0)
+  ]
+  df = spark.createDataFrame(data, schema)
+  df.write.format("iceberg").mode("append").save("nessie.employees.branch_ML_exp")
+  ```
+* `spark.sql("SELECT * FROM nessie.employees VERSION AS OF 'ML_exp'").show()`
+* `spark.sql("SELECT * FROM nessie.employees").show()`
+* `spark.sql("SELECT * FROM nessie.employees.refs").show()`
+* `spark.sql("ALTER TABLE nessie.employees DROP BRANCH ML_exp")`
+* `spark.sql("SELECT * FROM nessie.employees.refs").show()`
+
+### Nessie Branches (!)
 * `CREATE BRANCH etl_1 in nessie;`
 * Set branch reference to "etl_1"
 * `CREATE TABLE nessie.names2 (name VARCHAR);`
