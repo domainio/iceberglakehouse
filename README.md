@@ -148,5 +148,6 @@ https://docs.dremio.com/current/reference/sql/commands/apache-iceberg-tables/apa
 * `MERGE BRANCH "etl_1" INTO "main";`
 * `SELECT * FROM nessie.names2 AT BRANCH "main";`
 
+### Dremio
 * Save as view
-* Check the data products
+* Inspect the data products
