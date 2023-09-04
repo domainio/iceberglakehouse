@@ -92,8 +92,8 @@ spark.sql("SELECT * FROM nessie.names;").show()
   * General
     * Name: `nessie`
     * Nessie Endpoint URL: `HTTP://nessie:19120/api/v2`
-      - Use the docker-compose network ability
-      - Nessie/Dermio connector uses v2
+      > ℹ️ Here we use the docker-compose network ability.
+      > Also, using the v2 Nessie/Dermio connector
     * Nessue Authentication Type: `None`
 * Storage
   * AWS Access Key: `xxxxxxx` <from .env>
