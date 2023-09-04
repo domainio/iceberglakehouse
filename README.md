@@ -2,6 +2,13 @@
 Building a Data Lakehouse with Apache Iceberg, Spark, Dremio, Nessie &amp; Minio
 
 ## Launch environment
+> :warning:  **If you are using mac M1/M2**
+> Define these env vars:
+> ```
+> export DOCKER_BUILDKIT=0
+> export COMPOSE_DOCKER_CLI_BUILD=0
+> export DOCKER_DEFAULT_PLATFORM=linux/amd64
+> ```
 ### Clone repo
 `git clone git@github.com:domainio/iceberglakehouse.git`
 ### Minio Server
@@ -26,7 +33,8 @@ Building a Data Lakehouse with Apache Iceberg, Spark, Dremio, Nessie &amp; Minio
 
 ## Integrate Components
 ### Create Iceberg tables with Spark notebook
-* Browse to `http://127.0.0.1:8888/tree`
+* Go to the terminal where you launched the Spark notebook and locate the URL with the token: `http://127.0.0.1:8888/?token=xxxxx`
+* Browse to the URL with the token
 * Create a new Pyhton3 notebook
 * Run this code:
 ```
