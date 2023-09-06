@@ -77,11 +77,6 @@ spark.sql("INSERT INTO nessie.names VALUES ('Backend group'), ('Tikal office'), 
 spark.sql("SELECT * FROM nessie.names;").show()
 ```
 
-## Add Space to Dremio
-* Browse to `http://localhost:9047/`
-* Add a Space "data product 1"
-* Add new folders: Bronze, Silver, Gold
-
 ## Inspect warehouse data in minio
 * Browse to `127.0.0.1:9001`
 * Inspect minio Object browser for the data created by Spark: data and **metadata** files
