@@ -84,21 +84,21 @@ spark.sql("SELECT * FROM nessie.names;").show()
 ### Add Nessie data source to Dremio
 * Browse to `http://localhost:9047/`
 * Add source: nessie
-  * General
+  * General tab
     * Name: `nessie`
     * Nessie Endpoint URL: `HTTP://nessie:19120/api/v2`
       > ℹ️ Here we use the docker-compose network ability.
       > Also, using the v2 Nessie/Dermio connector
     * Nessue Authentication Type: `None`
-* Storage
-  * AWS Access Key: `xxxxxxx` <from .env>
-  * AWS Access Secret: `xxxxxxx` <from .env>
-  * AWS Root Path: `/warehouse`
-  * Connection Properties (allow access to storage)
-    * Name: `fs.s3a.path.style.access` Value: `true` (access to s3 API) 
-    * Name: `fs.s3a.endpoint` Value: `minio:9000` (the container name)
-    * Name: `dremio.s3.compat` Value: `true`  (allow to use s3 compatible storage layer)
-    * Encrypt connection: unchecked [ ]
+  * Storage tab
+    * AWS Access Key: `xxxxxxx` <from .env>
+    * AWS Access Secret: `xxxxxxx` <from .env>
+    * AWS Root Path: `/warehouse`
+    * Connection Properties (allow access to storage)
+      * Name: `fs.s3a.path.style.access` Value: `true` (access to s3 API) 
+      * Name: `fs.s3a.endpoint` Value: `minio:9000` (the container name)
+      * Name: `dremio.s3.compat` Value: `true`  (allow to use s3 compatible storage layer)
+      * Encrypt connection: unchecked [ ]
     
 
 ## Hand-on
