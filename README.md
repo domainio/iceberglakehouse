@@ -20,7 +20,7 @@ and more..
 
 ![alt text](./assets/datalakehouse.png)
 
-# How To instruction
+# Setup Guide
 ## Launch environment
 > :warning:  **If you are using mac M1/M2**
 > Define these env vars:
