@@ -16,7 +16,7 @@ and more..
 * **Minio** - cloud object storage (equivalent to S3).
 * **Nessie** - data catalog.
 * **Dremio** - data lakehouse management platform.
-* **Spark** - proof of ability to create an iceverg db table with an external engine.
+* **Spark** - proof of ability to create an iceberg db table with an external engine.
 
 ![alt text](./assets/datalakehouse.png)
 
