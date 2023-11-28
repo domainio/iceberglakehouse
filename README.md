@@ -18,7 +18,7 @@ and more..
 * **Dremio** - data lakehouse management platform.
 * **Spark** - proof of ability to create an iceberg db table with an external engine.
 
-![alt text](./assets/datalakehouse.png)
+<img src="https://github.com/domainio/iceberglakehouse/blob/main/assets/datalakehouse.png" width="600" />
 
 # Setup Guide
 ## Launch environment
