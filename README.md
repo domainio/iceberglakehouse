@@ -1,6 +1,26 @@
 # Iceberg Lakehouse
 Building a Data Lakehouse with Apache Iceberg, Spark, Dremio, Nessie &amp; Minio
 
+Gain the same pros of Data Warehouse and much more with your own storage layer and query engine:
+
+✅ ACID complient  
+✅ Schema and partition evolution  
+✅ Data versioning    
+✅ Cross platform tech agnostic  
+✅ Incremental processing  
+and more..
+
+## Main tech stack components
+
+* **Apache Iceberg** - open table format.
+* **Minio** - cloud object storage (equivalent to S3).
+* **Nessie** - data catalog.
+* **Dremio** - data lakehouse management platform.
+* **Spark** - proof of ability to create a db table with an external engine.
+
+![alt text](https://github.com/domainio/iceberglakehouse/assets/../../../../../assets/datalakehouse.png)
+
+# How To instruction
 ## Launch environment
 > :warning:  **If you are using mac M1/M2**
 > Define these env vars:
@@ -156,3 +176,7 @@ https://docs.dremio.com/current/reference/sql/commands/apache-iceberg-tables/apa
 ### Dremio
 * Save as view
 * Inspect the data products
+
+## Next steps:
+1. Add DBT to "seed" initial data and transforms.
+2. Add streaming data ingestion with Apache Flink into Apache Iceberg table(s).
